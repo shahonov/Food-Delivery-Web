@@ -3,10 +3,10 @@
 import { Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 
-import ApplicationLoader from "./components/ApplicationLoader";
+import AppRouter from "AppRouter";
 import Notification from "./components/Notification";
 import NavigationBar from "components/NavigationBar";
-import AppRouter from "AppRouter";
+import ApplicationLoader from "./components/ApplicationLoader";
 
 import theme from "global/theme";
 import { history } from "data/store";
