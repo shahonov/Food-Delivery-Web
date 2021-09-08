@@ -1,0 +1,20 @@
+.general-info-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+
+    .general-info-form-card {
+        width: 40vw;
+        padding: 2vw;
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+
+        .save-btn {
+            margin-top: 2vh;
+        }
+    }
+}

@@ -1,0 +1,1 @@
+export { ordersReducer } from './ordersReducer';

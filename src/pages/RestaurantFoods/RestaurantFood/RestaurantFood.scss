@@ -1,0 +1,125 @@
+@import "variables.scss";
+
+.meal-card {
+    width: 27%;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .card-header {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .image-wrapper {
+            width: 100%;
+            position: relative;
+
+            img {
+                min-height: 30vh;
+                max-height: 85vh;
+                position: absolute;
+                object-fit: cover;
+                opacity: 0.3;
+            }
+        }
+
+        .title-and-type {
+            display: flex;
+            width: 75%;
+            align-items: center;
+            margin: 1vw 0 0 1vw;
+
+            .content {
+                margin-left: 0.5vw;
+
+                .name {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .icons-wrapper {
+            width: 15%;
+            margin: 1vw 1vw 0 0;
+
+            .view-image-icon-btn {
+                border: 1px solid $clr-warning;
+                margin-left: 0.5vw;
+            }
+
+            .image-dialog-trigger {
+                .view-image-icon-btn {
+                    border: 1px solid $clr-success;
+
+                    &:hover {
+                        background-color: $clr-warning;
+                    }
+                }
+            }
+        }
+    }
+
+    .card-content {
+        width: 90%;
+        margin-top: 2vh;
+
+        .price-and-image {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .price-wrapper {
+                .price,
+                .total-price {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .order-wrapper {
+        .quantity-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2vh;
+
+            .qty-icon {
+                border: 1px solid $clr-primary-main;
+                color: black;
+                transition: 300ms;
+
+                &:hover {
+                    background-color: $clr-primary-main;
+                    border: 1px solid $clr-primary-light;
+                    transition: 300ms;
+                }
+            }
+
+            .qty-input {
+                width: 10%;
+                margin: 0 1vw;
+
+                div {
+                    input {
+                        color: black;
+                        font-size: 30px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .order-button {
+            &.active {
+                font-weight: 600;
+            }
+
+            font-size: 18px;
+        }
+    }
+}

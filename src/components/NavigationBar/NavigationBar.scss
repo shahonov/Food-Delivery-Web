@@ -1,0 +1,40 @@
+.nav-bar {
+    display: flex;
+    justify-content: flex-end;
+
+    .logo-wrapper {
+        width: 60%;
+        display: flex;
+        align-items: center;
+
+        span {
+            cursor: pointer;
+            padding: 0.5vw 1vw;
+            opacity: 0.7;
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .logo-text {
+            display: inline-block;
+            margin-left: 0.5vw;
+        }
+    }
+
+    .main-nav-group {
+        width: 15%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .right-nav-group {
+        width: 25%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .nav-bar-item {
+        margin-left: 0.5vw;
+    }
+}

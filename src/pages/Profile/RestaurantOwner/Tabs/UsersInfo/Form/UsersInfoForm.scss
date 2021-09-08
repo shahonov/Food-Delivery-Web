@@ -1,0 +1,56 @@
+@import 'variables.scss';
+
+.users-info-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+
+    .users-info-form-card {
+        padding: 2vw;
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+
+        .users-info-form-table {
+            .table-head-cell {
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .blocked {
+                background-color: $clr-error;
+            }
+
+            .table-body-cell {
+                text-align: center;
+                font-size: 16px;
+
+                .MuiButton-contained.block-btn {
+                    border: 1px solid white;
+                    background-color: $clr-error;
+
+                    &:hover {
+                        border: 1px solid black;
+                    }
+                }
+
+                .MuiButton-contained.unblock-btn {
+                    border: 1px solid white;
+                    background-color: $clr-secondary-dark;
+
+                    &:hover {
+                        border: 1px solid black;
+                    }
+                }
+            }
+        }
+    }
+
+    .dialog-photo-src {
+        text-align: center;
+        border: 2px solid red;
+    }
+}

@@ -1,0 +1,28 @@
+.restaurants-container {
+    .filters-container {
+        margin-top: 15vh;
+        display: flex;
+        justify-content: center;
+
+        .MuiTextField-root {
+            margin-left: 1vw;
+        }
+    }
+
+    .found-label {
+        margin-top: 1vh;
+    }
+
+    .rastaurants-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .pagination-container {
+        margin-top: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

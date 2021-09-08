@@ -1,0 +1,103 @@
+@import "variables.scss";
+
+html,
+body {
+    font-family: "Courier New", Courier, monospace;
+    min-height: 100vh;
+    position: relative;
+}
+
+.bold {
+    font-weight: 600 !important;
+}
+
+.unstyled-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.heading-lg {
+    font-size: 32px;
+}
+
+.heading-md {
+    font-size: 28px;
+}
+
+.heading-sm {
+    font-size: 24px;
+}
+
+.paragraph-sm {
+    font-size: 20px;
+}
+
+.paragraph-md {
+    font-size: 16px;
+}
+
+.paragraph-lg {
+    font-size: 12px;
+}
+
+.invalid-form-input {
+    color: $clr-error;
+    font-size: 14px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.MuiButtonBase-root,
+.MuiButton-contained {
+    .MuiButton-label {
+        font-family: "Special Elite", cursive;
+        p {
+            font-family: "Special Elite", cursive;
+        }
+    }
+}
+
+.MuiTextField-root {
+    &.special {
+        label {
+            font-family: "Special Elite", cursive;
+        }
+        div {
+            input {
+                font-family: "Special Elite", cursive;
+            }
+        }
+    }
+    &.indie {
+        label {
+            font-family: "Indie Flower", cursive;
+        }
+        div {
+            input {
+                font-family: "Indie Flower", cursive;
+            }
+        }
+    }
+    &.londrina {
+        label {
+            font-family: "Londrina Solid", cursive;
+        }
+        div {
+            input {
+                font-family: "Londrina Solid", cursive;
+            }
+        }
+    }
+    &.syncopate {
+        label {
+            font-family: "Syncopate", sans-serif;
+        }
+        div {
+            input {
+                font-family: "Syncopate", sans-serif;
+            }
+        }
+    }
+}

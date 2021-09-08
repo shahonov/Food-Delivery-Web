@@ -1,0 +1,10 @@
+@import 'variables.scss';
+
+.MuiButton-contained.remove-btn {
+    border: 1px solid white;
+    background-color: $clr-error;
+
+    &:hover {
+        border: 1px solid black;
+    }
+}

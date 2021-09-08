@@ -1,0 +1,60 @@
+@import "variables.scss";
+
+.restaurant-card {
+    width: 27%;
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .card-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .title-and-kitchen {
+            display: flex;
+            align-items: center;
+            margin-top: 1vw;
+            margin-left: 1vw;
+
+            .content {
+                margin-left: 0.5vw;
+
+                .name {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .fav-wrapper {
+            margin-top: 1vw;
+            margin-right: 1vw;
+
+            .fav-icon {
+                color: $clr-error;
+            }
+        }
+    }
+
+    .card-content {
+        width: 90%;
+        margin-top: 2vh;
+
+        .address {
+            display: flex;
+            align-items: center;
+        }
+
+        .free-delivery-wrapper {
+            margin-top: 1vh;
+
+            .free-delivery {
+                margin-left: 0.5vw;
+                font-weight: 600;
+            }
+        }
+    }
+}

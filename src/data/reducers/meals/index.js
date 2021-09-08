@@ -1,0 +1,1 @@
+export { mealsReducer } from './mealsReducer';

@@ -1,0 +1,52 @@
+@import 'variables.scss';
+
+.order-info-card {
+    margin: 5vh 0;
+
+    &.canceled {
+        background-color: $clr-primary-dark;
+    }
+
+    &.processing {
+        background-color: $clr-info;
+    }
+
+    &.delivering {
+        background-color: $clr-primary-light;
+    }
+
+    &.delivered {
+        background-color: $clr-secondary-light;
+    }
+
+    &.received {
+        background-color: $clr-secondary-dark;
+    }
+
+    .order-info-labels {
+        margin: 5vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .label-wrapper {
+            display: flex;
+            align-items: center;
+
+            strong {
+                margin-left: 0.5vw;
+
+                &.restaurant-name, &.status-changelog {
+                    border: 1px solid #777;
+                    padding: 0.5vw;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
