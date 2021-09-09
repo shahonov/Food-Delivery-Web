@@ -10,6 +10,7 @@ import { hideApplicationLoader, showApplicationLoader } from "./applicationLoade
 import {
     REMOVE_FAVORITE_RESTAURANT,
     ADD_FAVORITE_RESTAURANT,
+    CLEAR_CART_SUCCESS,
     SIGN_OUT_SUCCESS,
     SIGN_IN_SUCCESS,
     UPDATE_PROFILE,
@@ -23,6 +24,7 @@ export const signOut = (userId, expiredSession) => async dispatch => {
         const result = await usersService.signOut(userId);
         if (result.isSuccess) {
             dispatch({ type: SIGN_OUT_SUCCESS });
+            dispatch({ type: CLEAR_CART_SUCCESS });
             if (expiredSession) {
                 dispatch(showNotification('session has expired', notificationTypes.warning));
             } else {
