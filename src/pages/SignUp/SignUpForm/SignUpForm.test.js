@@ -5,7 +5,6 @@ import {
     TextField,
     CardActions,
     CardContent,
-    Button
 } from '@material-ui/core';
 
 import SignUpForm from './SignUpForm';
@@ -18,7 +17,8 @@ beforeEach(() => {
         handleBlur: jest.fn(),
         values: {
             email: '',
-            password: ''
+            password: '',
+            userRole: 'regularUser'
         },
         touched: {},
         errors: {}
@@ -67,7 +67,7 @@ describe('SignUpForm', () => {
         const errorDivsCount = component.root.findAllByProps(
             { className: 'invalid-form-input' }
         ).length;
-        expect(errorDivsCount).toEqual(3);
+        expect(errorDivsCount).toEqual(4);
     });
 
     it('should not render error messages when errors is true and touched is false', () => {

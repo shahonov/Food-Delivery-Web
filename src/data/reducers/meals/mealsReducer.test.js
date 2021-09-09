@@ -4,16 +4,17 @@ const { mealsReducer } = require("./mealsReducer");
 let initialState = {};
 beforeEach(() => {
     initialState = {
-        all: []
+        all: [],
+        totalCount: 0
     }
 });
 
 describe('mealsReducer', () => {
     it('should return meals when get owner meals action type', () => {
-        const payload = [{ mealId: '1' }, { mealId: '2' }];
+        const payload = { all: [{ mealId: '1' }, { mealId: '2' }] };
         const action = { type: GET_OWNER_MEALS, payload };
         const result = mealsReducer(initialState, action);
-        expect(result).toEqual({ all: payload });
+        expect(result).toEqual(payload);
     });
 
     it('should return meals plus added meal when add owner meal action type', () => {
@@ -25,11 +26,10 @@ describe('mealsReducer', () => {
 
     it('should return meals minus deleted meal when delete owner meal action type', () => {
         initialState = {
-            all:
-                [
-                    { _id: '1' },
-                    { _id: '2' }
-                ]
+            all: [
+                { _id: '1' },
+                { _id: '2' }
+            ]
         };
         const payload = '1';
         const action = { type: DELETE_OWNER_MEAL, payload };

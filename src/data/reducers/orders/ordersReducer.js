@@ -1,8 +1,8 @@
 import {
-    CREATE_ORDER_SUCCESS,
     EDIT_ORDER_STATUS_SUCCESS,
     GET_OWNER_ORDERS_SUCCESS,
-    GET_USER_ORDERS_SUCCESS
+    GET_USER_ORDERS_SUCCESS,
+    CREATE_ORDER_SUCCESS
 } from "data/actionTypes";
 
 const initialState = {
@@ -19,7 +19,6 @@ export const ordersReducer = (state = initialState, action) => {
             const foundItem = state.all.find(x => x._id === _id);
             const index = state.all.indexOf(foundItem);
             const copy = state.all.slice();
-            debugger;
             foundItem.status = status;
             foundItem.statusChangelog.push(statusChangelogObj);
             copy.splice(index, 1, foundItem);

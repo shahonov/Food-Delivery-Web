@@ -9,11 +9,10 @@ export const mealsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_OWNER_MEALS: return action.payload;
         case ADD_OWNER_MEAL: return {
-            all:
-                [
-                    ...state.all,
-                    action.payload
-                ],
+            all: [
+                ...state.all,
+                action.payload
+            ],
             totalCount: action.payload.totalCount
         };
         case DELETE_OWNER_MEAL: {

@@ -4,7 +4,7 @@ import { history, store } from 'data/store';
 import { endpoints } from 'constants/endpoints';
 import { signOut } from 'data/actions/userActions';
 
-const baseUrl = 'https://food-delivery-app-api.herokuapp.com/';
+const baseUrl = 'http://localhost:5000/';
 
 const buildUrl = endpoint => {
     return `${baseUrl}${endpoint}`;

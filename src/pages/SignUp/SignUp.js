@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { Slide } from 'react-reveal';
 import { connect } from 'react-redux';
 
 import { signUp } from 'data/actions/userActions';
@@ -12,7 +13,6 @@ import {
 } from 'global/formikValidations';
 
 import './SignUp.scss';
-import { Slide } from 'react-reveal';
 
 const SignIn = ({ signUp }) => {
     return (

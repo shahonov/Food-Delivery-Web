@@ -5,7 +5,6 @@ import { endpoints } from "constants/endpoints";
 
 export const cryptoService = {
     /**
-     * 
      * @returns publicRSAKey and encryptionId
      */
     getEncryptionInfo: () => httpService.get(endpoints.crypto.publicRSAKey)

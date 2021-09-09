@@ -6,7 +6,7 @@ import {
     CardContent,
 } from "@material-ui/core";
 
-import OrderMealsTable from "./Table/OrderMealsTable";
+import OrderMealsTable from "./Table";
 import { orderStatuses } from "constants/orderStatuses/orderStatuses";
 
 import './RestaurantOrderCard.scss';

@@ -8,11 +8,12 @@ import {
     Toolbar,
     Typography,
 } from '@material-ui/core';
-import { signOut } from 'data/actions/userActions';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 
-import './NavigationBar.scss';
 import { roles } from 'global/roles';
+import { signOut } from 'data/actions/userActions';
+
+import './NavigationBar.scss';
 
 const NavigationBar = ({ user, signOut }) => {
     const history = useHistory();

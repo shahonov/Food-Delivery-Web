@@ -1,19 +1,15 @@
 import { roles } from './roles';
 
 describe('roles', () => {
-    it('should contain admin role', () => {
-        expect(Object.keys(roles)).toContain(roles.admin);
+    it('should contain regular user role', () => {
+        expect(Object.keys(roles)).toContain(roles.regularUser);
     });
 
-    it('should contain manager role', () => {
-        expect(Object.keys(roles)).toContain(roles.manager);
+    it('should contain restaurant owner role', () => {
+        expect(Object.keys(roles)).toContain(roles.restaurantOwner);
     });
 
-    it('should contain user role', () => {
-        expect(Object.keys(roles)).toContain(roles.user);
+    it('should contain 2 roles', () => {
+        expect(Object.keys(roles).length).toEqual(2);
     });
-
-    it('should contain 4 roles', () => {
-        expect(Object.keys(roles).length).toEqual(3);
-    });
-})
+});
