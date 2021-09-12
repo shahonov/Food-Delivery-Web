@@ -11,6 +11,8 @@ import { editOrderStatus, getRestaurantOwnerOrders } from "data/actions/ordersAc
 
 import './Orders.scss';
 
+const onlyUnique = (value, index, self) => self.indexOf(value) === index;
+
 const Orders = ({
     user,
     orders,
@@ -30,7 +32,7 @@ const Orders = ({
     const handleDeliveringOrder = orderId => editOrderStatus(orderId, orderStatuses.inRoute);
     const handleDeliveredOrder = orderId => editOrderStatus(orderId, orderStatuses.delivered);
 
-    const existingOrderStatuses = orders.map(x => x.status);
+    const existingOrderStatuses = orders.map(x => x.status).filter(onlyUnique);
     if (orderStatusFilter) {
         orders = orders.filter(x => x.status === orderStatusFilter);
     }
