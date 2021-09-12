@@ -1,3 +1,3 @@
 /* istanbul ignore file */
 
-export { default } from './RestaurantOwner';
+export { default } from './ProfileRestaurantOwner';

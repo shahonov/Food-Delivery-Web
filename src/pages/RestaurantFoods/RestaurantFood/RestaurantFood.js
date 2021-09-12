@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import {
@@ -110,8 +111,8 @@ const RestaurantFood = ({
                         <div className='order-wrapper'>
                             <div className='quantity-wrapper'>
                                 <IconButton
-                                    className='qty-icon'
                                     disabled={quantity === 0}
+                                    className='qty-icon minus'
                                     onClick={handleDecreaseQty}
                                 >
                                     <Remove />

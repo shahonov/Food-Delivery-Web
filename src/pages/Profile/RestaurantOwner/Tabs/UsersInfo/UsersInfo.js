@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Slide } from "react-reveal";
 
@@ -14,7 +14,6 @@ const UsersInfo = ({
     unblockFromRestaurant,
     getRestaurantOwnerOrders
 }) => {
-
     useEffect(() => {
         getRestaurantOwnerOrders(user._id);
         // eslint-disable-next-line

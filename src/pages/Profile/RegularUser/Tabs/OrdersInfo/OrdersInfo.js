@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from "react";
 import { Slide } from "react-reveal";
 import { connect } from "react-redux";

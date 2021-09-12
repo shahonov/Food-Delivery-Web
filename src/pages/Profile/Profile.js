@@ -1,9 +1,10 @@
+import React from 'react';
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { roles } from "global/roles";
-import RegularUser from "./RegularUser";
-import RestaurantOwner from "./RestaurantOwner";
+import ProfileRegularUser from "./RegularUser";
+import ProfileRestaurantOwner from "./RestaurantOwner";
 import { getRestaurantOwnerMeals } from "data/actions/mealsActions";
 
 const Profile = ({ user }) => {
@@ -16,9 +17,9 @@ const Profile = ({ user }) => {
     return (
         user.role === roles.regularUser
             ?
-            <RegularUser user={user} />
+            <ProfileRegularUser user={user} />
             :
-            <RestaurantOwner user={user} />
+            <ProfileRestaurantOwner user={user} />
     );
 };
 

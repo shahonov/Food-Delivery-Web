@@ -1,8 +1,10 @@
+/* istanbul ignore file */
+
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Slide } from 'react-reveal';
 import { Formik } from 'formik';
+import { Slide } from 'react-reveal';
+import { connect } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 import ResetPasswordForm from './Form';
 import { notificationTypes } from 'constants/notificationTypes';

@@ -1,3 +1,3 @@
 /* istanbul ignore file */
 
-export { default } from './RegularUser';
+export { default } from './ProfileRegularUser';

@@ -1,21 +1,20 @@
-/* istanbul ignore file */
-
+import React from 'react';
 import { connect } from "react-redux";
 import { Typography } from "@material-ui/core";
 
-import Guest from "./Guest";
+import HomeGuest from "./Guest";
 import { roles } from "global/roles";
-import RegularUser from "./RegularUser";
-import RestaurantOwner from "./RestaurantOwner";
+import HomeRegularUser from "./RegularUser";
+import HomeRestaurantOwner from "./RestaurantOwner";
 
 import './Home.scss';
 
 const Home = ({ user }) => {
     const getHomePageView = role => {
         switch (role) {
-            case roles.regularUser: return <RegularUser />
-            case roles.restaurantOwner: return <RestaurantOwner />
-            default: return <Guest />
+            case roles.regularUser: return <HomeRegularUser />
+            case roles.restaurantOwner: return <HomeRestaurantOwner />
+            default: return <HomeGuest />
         }
     }
 

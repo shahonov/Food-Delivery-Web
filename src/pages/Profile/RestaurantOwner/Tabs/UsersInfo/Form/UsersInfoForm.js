@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     Card,
     Table,
@@ -24,7 +25,7 @@ const UsersInfoForm = ({
             <Card elevation={10} className='users-info-form-card'>
                 <Typography variant='h5' className='card-header syncopate'>Customers info</Typography>
                 {
-                    customers.length > 0
+                    Object.keys(customers).length > 0
                         ?
                         <TableContainer>
                             <Table aria-label='users info table' className='users-info-form-table'>

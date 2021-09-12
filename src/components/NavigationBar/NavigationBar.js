@@ -35,7 +35,7 @@ const NavigationBar = ({ user, signOut }) => {
         <AppBar position='fixed' color='secondary'>
             <Toolbar className='nav-bar'>
                 <div className='logo-wrapper'>
-                    <span onClick={routeToHomePage}>
+                    <span className='home-btn' onClick={routeToHomePage}>
                         <FastfoodIcon />
                         <Typography className='syncopate logo-text' variant='h6'>Food Delivery</Typography>
                     </span>

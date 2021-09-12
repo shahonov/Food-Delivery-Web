@@ -1,4 +1,6 @@
+import React from 'react';
 import { Slide } from "react-reveal";
+
 import FavoriteRestaurantCard from "./Card";
 
 const FavoritesInfo = ({ user, removeFromFavorites }) => {

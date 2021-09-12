@@ -1,3 +1,4 @@
+import React from 'react';
 import { Formik } from "formik";
 import { Slide } from "react-reveal";
 import { connect } from "react-redux";

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useHistory } from "react-router-dom";
 import {
     Card,
@@ -21,7 +22,6 @@ const RestaurantOrderCard = ({
     const history = useHistory();
 
     const routeToProfilePage = () => history.push('/profile');
-
 
     const handleCreateOrder = () => {
         const { restaurantId } = restaurantMeals[0];

@@ -1,3 +1,3 @@
 /* istanbul ignore file */
 
-export { default } from './Guest';
+export { default } from './HomeGuest';

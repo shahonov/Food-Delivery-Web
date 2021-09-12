@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import React, { useEffect } from 'react';
 import { Formik } from "formik";
-import { connect } from "react-redux";
 import { Slide } from "react-reveal";
+import { connect } from "react-redux";
 
 import MenuInfoForm from "./Form";
 import {

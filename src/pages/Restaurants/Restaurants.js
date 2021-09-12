@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Slide } from 'react-reveal';

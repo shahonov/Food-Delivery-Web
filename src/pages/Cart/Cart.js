@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from "react-redux";
 import { Slide } from "react-reveal";
 import { Typography } from "@material-ui/core";
