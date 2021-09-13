@@ -5,7 +5,6 @@ import {
     Table,
     Button,
     Dialog,
-    Tooltip,
     TableRow,
     TextField,
     TableHead,
@@ -205,15 +204,13 @@ const MenuInfoForm = ({
                                     </TableCell>
                                     <TableCell className='table-body-cell'>
                                         <Typography className='special'>
-                                            <Tooltip title={meal.unsplashPhotoUrl}>
-                                                <Button
-                                                    color='default'
-                                                    variant='outlined'
-                                                    onClick={() => handleOpenDialog(meal.unsplashPhotoUrl)}
-                                                >
-                                                    Click here to preview
-                                                </Button>
-                                            </Tooltip>
+                                            <Button
+                                                color='default'
+                                                variant='outlined'
+                                                onClick={() => handleOpenDialog(meal.unsplashPhotoUrl)}
+                                            >
+                                                Click here to preview
+                                            </Button>
                                         </Typography>
                                     </TableCell>
                                     <TableCell className='table-body-cell'>
