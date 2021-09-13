@@ -217,7 +217,7 @@ const MenuInfoForm = ({
                                         </Typography>
                                     </TableCell>
                                     <TableCell className='table-body-cell'>
-                                        <Typography className='special'>{meal.mealType}</Typography>
+                                        <Typography className='special'>{meal.description}</Typography>
                                     </TableCell>
                                     <TableCell className='table-body-cell'>
                                         <Typography className='special'>{meal.netWeight}</Typography>
