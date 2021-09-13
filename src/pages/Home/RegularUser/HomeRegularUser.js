@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Slide } from "react-reveal";
 import { connect } from "react-redux";
 
 import OrderInfoText from '../components/OrderInfoText';
+import { getRegularUserOrders } from 'data/actions/ordersActions';
 import AccountInfoTextUser from '../components/AccountInfoTextUser';
 import { orderStatuses } from "constants/orderStatuses/orderStatuses";
 
 import './HomeRegularUser.scss';
 
-const HomeRegularUser = ({ orders, user }) => {
+const HomeRegularUser = ({ orders, user, getRegularUserOrders }) => {
+
+    useEffect(() => {
+        getRegularUserOrders(user._id);
+    }, [getRegularUserOrders, user]);
 
     const fillAccountInfoText = user => {
         const nodes = [];
@@ -76,6 +81,6 @@ const mapStateToProps = state => ({
     orders: state.orders.all
 })
 
-const mapDispatchToPorps = {}
+const mapDispatchToPorps = { getRegularUserOrders }
 
 export default connect(mapStateToProps, mapDispatchToPorps)(HomeRegularUser);

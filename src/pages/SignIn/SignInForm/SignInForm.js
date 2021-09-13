@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Card,
     Button,
@@ -18,10 +18,22 @@ const SignInForm = ({
     errors,
     touched
 }) => {
+    const listenToEnter = ev => {
+        if (ev.key === 'Enter') {
+            handleSubmit();
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('keyup', listenToEnter);
+        return () => window.removeEventListener('keyup', listenToEnter);
+        // eslint-disable-next-line
+    }, []);
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <Card elevation={10} className='sign-in-form-card'>
-                <Typography variant='h5' className='card-header'>Sign in</Typography>
+                <Typography variant='h5' className='card-header'>Login</Typography>
                 <CardContent>
                     <div className='form-input'>
                         <TextField

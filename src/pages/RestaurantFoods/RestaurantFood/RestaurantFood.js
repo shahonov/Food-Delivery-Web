@@ -70,7 +70,7 @@ const RestaurantFood = ({
                 <>
                     <div className='card-header'>
                         <div className='image-wrapper'>
-                            <img src={unsplashPhotoUrl} alt={`${mealName}`} />
+                            <img className={`${quantity > 0 ? 'active' : ''}`} src={unsplashPhotoUrl} alt={`${mealName}`} />
                         </div>
                         <div className='title-and-description'>
                             <div className='content'>

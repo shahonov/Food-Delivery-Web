@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Slide } from "react-reveal";
 import { connect } from "react-redux";
 
 import OrderInfoText from "../components/OrderInfoText";
 import AccountInfoTextOwner from '../components/AccountInfoTextOwner';
 import { orderStatuses } from "constants/orderStatuses/orderStatuses";
+import { getRestaurantOwnerOrders } from 'data/actions/ordersActions';
 
 import './HomeRestaurantOwner.scss';
 
-const HomeRestaurantOwner = ({ orders, user }) => {
+const HomeRestaurantOwner = ({ orders, user, getRestaurantOwnerOrders }) => {
+
+    useEffect(() => {
+        getRestaurantOwnerOrders(user._id);
+    }, [getRestaurantOwnerOrders, user]);
 
     const fillAccountInfoText = user => {
         if (
@@ -65,6 +70,6 @@ const mapStateToProps = state => ({
     orders: state.orders.all
 })
 
-const mapDispatchToPorps = {}
+const mapDispatchToPorps = { getRestaurantOwnerOrders }
 
 export default connect(mapStateToProps, mapDispatchToPorps)(HomeRestaurantOwner);

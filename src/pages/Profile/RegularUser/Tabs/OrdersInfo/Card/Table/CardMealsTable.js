@@ -22,9 +22,6 @@ const CardMealsTable = ({
                             <Typography className='special bold'>Meal name</Typography>
                         </TableCell>
                         <TableCell align='center'>
-                            <Typography className='special bold'>Meal type</Typography>
-                        </TableCell>
-                        <TableCell align='center'>
                             <Typography className='special bold'>Net weight</Typography>
                         </TableCell>
                         <TableCell align='center'>
@@ -42,9 +39,6 @@ const CardMealsTable = ({
                                 <TableRow key={i} hover>
                                     <TableCell align='center'>
                                         <Typography className='special'>{x.mealName}</Typography>
-                                    </TableCell>
-                                    <TableCell align='center'>
-                                        <Typography className='special'>{x.mealType}</Typography>
                                     </TableCell>
                                     <TableCell align='center'>
                                         <Typography className='special'>{x.netWeight}</Typography>

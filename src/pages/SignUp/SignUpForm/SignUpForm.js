@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Card,
     Select,
@@ -12,8 +12,9 @@ import {
     FormControl
 } from '@material-ui/core';
 
-import './SignUpForm.scss';
 import { roles } from 'global/roles';
+
+import './SignUpForm.scss';
 
 const SignUpForm = ({
     handleChange,
@@ -23,10 +24,22 @@ const SignUpForm = ({
     errors,
     touched
 }) => {
+    const listenToEnter = ev => {
+        if (ev.key === 'Enter') {
+            handleSubmit();
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('keyup', listenToEnter);
+        return () => window.removeEventListener('keyup', listenToEnter);
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <form>
             <Card elevation={10} className='sign-up-form-card'>
-                <Typography variant='h5' className='card-header'>Sign up</Typography>
+                <Typography variant='h5' className='card-header'>Register</Typography>
                 <CardContent>
                     <div className='form-input'>
                         <TextField
