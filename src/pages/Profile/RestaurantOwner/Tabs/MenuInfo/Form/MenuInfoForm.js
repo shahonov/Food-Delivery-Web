@@ -12,10 +12,16 @@ import {
     TableCell,
     TableBody,
     Typography,
+    IconButton,
     DialogTitle,
-    TableContainer
+    TableContainer,
 } from "@material-ui/core";
-import { AddBoxOutlined, DeleteForeverOutlined } from '@material-ui/icons';
+import {
+    ArrowUpward,
+    ArrowDownward,
+    AddBoxOutlined,
+    DeleteForeverOutlined
+} from '@material-ui/icons';
 
 import './MenuInfoForm.scss';
 
@@ -26,6 +32,7 @@ const MenuInfoForm = ({
     handleBlur,
     handleChange,
     handleSubmit,
+    changeMealOrder,
     handleDeleteMeal
 }) => {
     const [open, setOpen] = useState(false);
@@ -40,6 +47,11 @@ const MenuInfoForm = ({
         setPhotoSrc('');
     }
 
+    const handleIncreaseOrderNumber = meal => changeMealOrder(meal._id, meal.orderId, meal.orderId + 1);
+    const handleDecreaseOrderNumber = meal => changeMealOrder(meal._id, meal.orderId, meal.orderId - 1);
+
+    const orderedMeals = values.meals.sort((a, b) => a.orderId - b.orderId);
+
     return (
         <form onSubmit={handleSubmit} className='menu-info-form'>
             <Card elevation={10} className='menu-info-form-card'>
@@ -48,6 +60,9 @@ const MenuInfoForm = ({
                     <Table aria-label='menu info table' className='menu-info-form-table'>
                         <TableHead>
                             <TableRow>
+                                <TableCell className='table-body-cell'>
+                                    <Typography variant='h5' className='special'>Order</Typography>
+                                </TableCell>
                                 <TableCell className='table-head-cell'>
                                     <Typography variant='h5' className='special'>Meal name</Typography>
                                 </TableCell>
@@ -55,7 +70,7 @@ const MenuInfoForm = ({
                                     <Typography variant='h5' className='special'>Unsplash photo url</Typography>
                                 </TableCell>
                                 <TableCell className='table-head-cell'>
-                                    <Typography variant='h5' className='special'>Meal type</Typography>
+                                    <Typography variant='h5' className='special'>Description</Typography>
                                 </TableCell>
                                 <TableCell className='table-head-cell'>
                                     <Typography variant='h5' className='special'>Net weight</Typography>
@@ -70,6 +85,7 @@ const MenuInfoForm = ({
                         </TableHead>
                         <TableBody>
                             <TableRow hover>
+                                <TableCell className='table-body-cell'></TableCell>
                                 <TableCell className='table-body-cell'>
                                     <TextField
                                         fullWidth
@@ -108,17 +124,17 @@ const MenuInfoForm = ({
                                     <TextField
                                         fullWidth
                                         size='small'
-                                        name='mealType'
-                                        label='Meal type'
                                         variant='outlined'
+                                        name='description'
+                                        label='Description'
                                         className='special'
                                         onBlur={handleBlur}
-                                        value={values.mealType}
                                         onChange={handleChange}
+                                        value={values.description}
                                     />
                                     {
-                                        errors.mealType && touched.mealType &&
-                                        <div name='mealType' className='invalid-form-input'>{errors.mealType}</div>
+                                        errors.description && touched.description &&
+                                        <div name='description' className='invalid-form-input'>{errors.description}</div>
                                     }
                                 </TableCell>
                                 <TableCell className='table-body-cell'>
@@ -166,8 +182,24 @@ const MenuInfoForm = ({
                                     </Button>
                                 </TableCell>
                             </TableRow>
-                            {values.meals.map(meal => (
+                            {orderedMeals.map(meal => (
                                 <TableRow hover key={meal._id}>
+                                    <TableCell className='table-body-cell'>
+                                        <div className='order-icons'>
+                                            <IconButton
+                                                className='arrow-up'
+                                                onClick={() => handleDecreaseOrderNumber(meal)}
+                                            >
+                                                <ArrowUpward />
+                                            </IconButton>
+                                            <IconButton
+                                                className='arrow-down'
+                                                onClick={() => handleIncreaseOrderNumber(meal)}
+                                            >
+                                                <ArrowDownward />
+                                            </IconButton>
+                                        </div>
+                                    </TableCell>
                                     <TableCell className='table-body-cell'>
                                         <Typography className='special'>{meal.mealName}</Typography>
                                     </TableCell>

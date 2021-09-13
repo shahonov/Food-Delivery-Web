@@ -5,9 +5,10 @@ import { connect } from "react-redux";
 
 import MenuInfoForm from "./Form";
 import {
+    changeMealOrder,
     addRestaurantOwnerMeal,
     getRestaurantOwnerMeals,
-    deleteRestaurantOwnerMeal
+    deleteRestaurantOwnerMeal,
 } from "data/actions/mealsActions";
 import {
     validateNonEmptyInputs,
@@ -19,6 +20,7 @@ import {
 const MenuInfo = ({
     user,
     meals,
+    changeMealOrder,
     addRestaurantOwnerMeal,
     getRestaurantOwnerMeals,
     deleteRestaurantOwnerMeal
@@ -42,7 +44,7 @@ const MenuInfo = ({
             initialValues={{
                 mealName: '',
                 unsplashPhotoUrl: '',
-                mealType: '',
+                description: '',
                 netWeight: '',
                 price: '',
                 meals
@@ -52,13 +54,16 @@ const MenuInfo = ({
                     ...validateInputsLengths(values, ['mealName'], 3, 30),
                     ...validateUnsplashUrls(values, ['unsplashPhotoUrl']),
                     ...validateNumberInputs(values, ['netWeight', 'price']),
-                    ...validateNonEmptyInputs(values, ['netWeight', 'price', 'mealType'])
+                    ...validateNonEmptyInputs(values, ['netWeight', 'price', 'description'])
                 };
             }}
             onSubmit={values => {
                 const { meals, ...rest } = values;
+                const sorted = meals.sort((a, b) => b.orderId - a.orderId);
+                const nextOrderId = sorted[0]?.orderId + 1 || 1;
                 const mealInfo = {
                     ...rest,
+                    orderId: nextOrderId,
                     unsplashPhotoUrl: transformUnsplashPhotoUrlToSrc(rest.unsplashPhotoUrl)
                 };
                 addRestaurantOwnerMeal(user._id, mealInfo);
@@ -69,6 +74,7 @@ const MenuInfo = ({
                     <Slide bottom duration={300}>
                         <MenuInfoForm
                             {...props}
+                            changeMealOrder={changeMealOrder}
                             handleDeleteMeal={handleDeleteMeal}
                         />
                     </Slide>
@@ -84,6 +90,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToPorps = {
+    changeMealOrder,
     addRestaurantOwnerMeal,
     getRestaurantOwnerMeals,
     deleteRestaurantOwnerMeal

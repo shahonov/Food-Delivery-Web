@@ -19,10 +19,11 @@ export const endpoints = {
     meals: {
         addOwnerMeal: 'meals/owner/add-meal',
         deleteOwnerMeal: 'meals/owner/delete-meal',
-        getOwnerMeals: (ownerId, from, to) => `meals/owner/${ownerId}${from && to ? `/${from}/${to}` : '/invalid/invalid'}`,
+        changeMealOrder: 'meals/owner/change-order',
+        getOwnerMeals: ownerId => `meals/owner/${ownerId}`,
     },
     restaurants: {
-        get: (from, to) => `restaurants/${from}/${to}`
+        get: 'restaurants'
     },
     orders: {
         getOwnerOrders: ownerId => `orders/owner/${ownerId}`,

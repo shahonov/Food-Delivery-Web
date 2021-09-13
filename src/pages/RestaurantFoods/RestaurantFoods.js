@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Slide } from "react-reveal";
-// import { Pagination } from "@material-ui/lab";
 import { TextField, Typography } from "@material-ui/core";
 
 import { addMealToCart } from "data/actions/cartActions";
@@ -26,45 +25,43 @@ const RestaurantFoods = ({
     user,
     meals,
     addMealToCart,
-    // totalMealsCount,
     getRestaurantOwnerMeals
 }) => {
-    const paginationStep = 9;
-    // const pagesCount = Math.ceil(totalMealsCount / paginationStep);
-
     const { restaurantId, restaurantName } = useParams();
 
     const [name, setName] = useState('');
-    const [mealType, setMealType] = useState('');
+    const [maximumPrice, setMaximumPrice] = useState('');
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1);
 
     useEffect(() => {
         (async () => {
             setLoading(true);
-            await getRestaurantOwnerMeals(
-                restaurantId,
-                (page - 1) * paginationStep,
-                ((page - 1) * paginationStep) + paginationStep
-            );
+            await getRestaurantOwnerMeals(restaurantId);
             setLoading(false);
         })();
-    }, [getRestaurantOwnerMeals, restaurantId, page]);
+    }, [getRestaurantOwnerMeals, restaurantId]);
 
-    const handleChangePage = (ev, page) => setPage(page);
     const handleNameChange = ev => setName(ev.target.value);
-    const handleAddressChange = ev => setMealType(ev.target.value);
+    const handleMaxPriceChange = ev => setMaximumPrice(
+        !isNaN(ev.target.value) && ev.target.value !== ''
+            ? +ev.target.value
+            : ''
+    );
 
     const filteredData = filterData(meals, [
         {
             propName: 'mealName',
             value: name
-        },
-        {
-            propName: 'mealType',
-            value: mealType
         }
-    ]);
+    ])
+        .sort((a, b) => a.orderId - b.orderId)
+        .filter(x => {
+            if (maximumPrice && !isNaN(maximumPrice)) {
+                return +x.price <= maximumPrice
+            } else {
+                return true;
+            }
+        });
 
     // insert phantom nodes so the last row cards to be left-aligned
     // because of display:flex and justify-content:space-between
@@ -102,12 +99,12 @@ const RestaurantFoods = ({
                         />
                         <TextField
                             size='small'
-                            value={mealType}
                             variant='outlined'
                             className='special'
-                            label='Search by address'
-                            placeholder='Type address'
-                            onChange={handleAddressChange}
+                            value={maximumPrice}
+                            label='Maximum price'
+                            onChange={handleMaxPriceChange}
+                            placeholder='Type maximum price'
                         />
                     </div>
                     <Typography
@@ -134,20 +131,6 @@ const RestaurantFoods = ({
                                     })
                                 }
                             </div>
-                            {/* {
-                                pagesCount > 1 &&
-                                <div className='pagination-container'>
-                                    <Pagination
-                                        page={page}
-                                        size='large'
-                                        shape='rounded'
-                                        color='secondary'
-                                        variant='outlined'
-                                        count={pagesCount}
-                                        onChange={handleChangePage}
-                                    />
-                                </div>
-                            } */}
                         </div>
                     </Slide>
                 </div>
@@ -157,8 +140,7 @@ const RestaurantFoods = ({
 
 const mapStateToProps = state => ({
     user: state.user,
-    meals: state.meals.all,
-    totalMealsCount: state.meals.totalCount
+    meals: state.meals.all
 })
 
 const mapDispatchToPorps = { getRestaurantOwnerMeals, addMealToCart }

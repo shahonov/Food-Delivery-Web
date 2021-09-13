@@ -62,8 +62,7 @@ describe('endpoints', () => {
     describe('meals', () => {
         it('should contain get endpoint', () => {
             expect(typeof endpoints.meals.getOwnerMeals).toEqual('function');
-            expect(endpoints.meals.getOwnerMeals('pizza')).toEqual('meals/owner/pizza/invalid/invalid');
-            expect(endpoints.meals.getOwnerMeals('pizza', 1, 2)).toEqual('meals/owner/pizza/1/2');
+            expect(endpoints.meals.getOwnerMeals('pizza')).toEqual('meals/owner/pizza');
         });
 
         it('should contain add endpoint', () => {
@@ -77,8 +76,7 @@ describe('endpoints', () => {
 
     describe('restaurants', () => {
         it('should contain get endpoint', () => {
-            expect(typeof endpoints.restaurants.get).toEqual('function');
-            expect(endpoints.restaurants.get(1, 2)).toEqual('restaurants/1/2');
+            expect(endpoints.restaurants.get).toEqual('restaurants');
         });
     });
 

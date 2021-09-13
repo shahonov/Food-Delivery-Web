@@ -27,8 +27,8 @@ const RestaurantFood = ({
     price,
     phantom,
     mealName,
-    mealType,
     netWeight,
+    description,
     restaurantId,
     addMealToCart,
     restaurantName,
@@ -53,9 +53,9 @@ const RestaurantFood = ({
             _id: uuid(),
             price,
             mealName,
-            mealType,
             quantity,
             netWeight,
+            description,
             restaurantId,
             restaurantName,
             unsplashPhotoUrl,
@@ -72,13 +72,13 @@ const RestaurantFood = ({
                         <div className='image-wrapper'>
                             <img src={unsplashPhotoUrl} alt={`${mealName}`} />
                         </div>
-                        <div className='title-and-type'>
+                        <div className='title-and-description'>
                             <div className='content'>
                                 <Typography variant='h6' className='name syncopate'>
                                     {mealName}
                                 </Typography>
-                                <Typography variant='body2' className='meal-type syncopate'>
-                                    {mealType} - {netWeight} gr.
+                                <Typography variant='body2' className='description syncopate'>
+                                    {description} - <strong>{netWeight}gr.</strong>
                                 </Typography>
                             </div>
                         </div>

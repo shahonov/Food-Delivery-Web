@@ -9,7 +9,7 @@ export const mealsService = {
      * @param {string} ownerId
      * @returns MealsArray
      */
-    getOwnerMeals: (ownerId, from, to) => httpService.get(endpoints.meals.getOwnerMeals(ownerId, from, to)),
+    getOwnerMeals: (ownerId, from, to) => httpService.get(endpoints.meals.getOwnerMeals(ownerId)),
     /**
      * 
      * @param {string} ownerId
@@ -23,5 +23,13 @@ export const mealsService = {
      * @param {string} mealId
      * @returns isSuccess
      */
-    deleteOwnerMeal: (ownerId, mealId) => httpService.delete(endpoints.meals.deleteOwnerMeal, { ownerId, mealId })
+    deleteOwnerMeal: (ownerId, mealId) => httpService.delete(endpoints.meals.deleteOwnerMeal, { ownerId, mealId }),
+    /**
+     * 
+     * @param {string} mealId
+     * @param {string|number} oldOrderId
+     * @param {string|number} newOrderId
+     * @returns isSuccess
+     */
+    changeMealOrder: (mealId, oldOrderId, newOrderId) => httpService.patch(endpoints.meals.changeMealOrder, { mealId, oldOrderId, newOrderId })
 }

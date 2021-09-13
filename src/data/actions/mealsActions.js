@@ -6,7 +6,8 @@ import { notificationTypes } from "constants/notificationTypes";
 import {
     ADD_OWNER_MEAL,
     GET_OWNER_MEALS,
-    DELETE_OWNER_MEAL
+    DELETE_OWNER_MEAL,
+    CHANGE_MEAL_ORDER
 } from "data/actionTypes";
 import { hideApplicationLoader, showApplicationLoader } from "./applicationLoaderActions";
 
@@ -17,7 +18,7 @@ export const getRestaurantOwnerMeals = (ownerId, from, to) => async dispatch => 
         const result = await mealsService.getOwnerMeals(ownerId, from, to);
         dispatch(getMealsSuccess(result));
     } catch (err) {
-        dispatch(showNotification('could not get owner meals', notificationTypes.error));
+        dispatch(showNotification('could not get meals', notificationTypes.error));
     } finally {
         dispatch(hideApplicationLoader());
     }
@@ -35,7 +36,7 @@ export const addRestaurantOwnerMeal = (ownerId, meal) => async dispatch => {
             dispatch(showNotification(result.message, notificationTypes.error));
         }
     } catch (err) {
-        dispatch(showNotification('could not add owner meal', notificationTypes.error));
+        dispatch(showNotification('could not add meal', notificationTypes.error));
     } finally {
         dispatch(hideApplicationLoader());
     }
@@ -52,7 +53,24 @@ export const deleteRestaurantOwnerMeal = (ownerId, mealId) => async dispatch => 
             dispatch(showNotification(result.message, notificationTypes.error));
         }
     } catch (err) {
-        dispatch(showNotification('could not delete owner meal', notificationTypes.error));
+        dispatch(showNotification('could not delete meal', notificationTypes.error));
+    } finally {
+        dispatch(hideApplicationLoader());
+    }
+}
+
+const changeMealOrderSuccess = payload => ({ type: CHANGE_MEAL_ORDER, payload });
+export const changeMealOrder = (mealId, oldOrderId, newOrderId) => async dispatch => {
+    try {
+        dispatch(showApplicationLoader());
+        const result = await mealsService.changeMealOrder(mealId, oldOrderId, newOrderId);
+        if (result.isSuccess) {
+            dispatch(changeMealOrderSuccess({ mealId, oldOrderId, newOrderId }));
+        } else {
+            dispatch(showNotification(result.message, notificationTypes.error));
+        }
+    } catch (err) {
+        dispatch(showNotification('could not change meal order', notificationTypes.error));
     } finally {
         dispatch(hideApplicationLoader());
     }

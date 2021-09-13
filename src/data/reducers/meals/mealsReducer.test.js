@@ -1,4 +1,4 @@
-const { GET_OWNER_MEALS, ADD_OWNER_MEAL, DELETE_OWNER_MEAL } = require("data/actionTypes");
+const { GET_OWNER_MEALS, ADD_OWNER_MEAL, DELETE_OWNER_MEAL, CHANGE_MEAL_ORDER } = require("data/actionTypes");
 const { mealsReducer } = require("./mealsReducer");
 
 let initialState = {};
@@ -41,5 +41,38 @@ describe('mealsReducer', () => {
         const action = { type: 'UNKNOWN' };
         const result = mealsReducer(initialState, action);
         expect(result).toEqual(initialState);
+    });
+
+    it('should swap meals orderIds', () => {
+        initialState = {
+            all: [
+                {
+                    _id: 123,
+                    name: 'Pizza',
+                    orderId: 1
+                },
+                {
+                    _id: 321,
+                    name: 'Soup',
+                    orderId: 2
+                }
+            ]
+        }
+        const payload = { mealId: 321, oldOrderId: 2, newOrderId: 1 };
+        const action = { type: CHANGE_MEAL_ORDER, payload };
+        const result = mealsReducer(initialState, action);
+        const expected = [
+            {
+                _id: 123,
+                name: 'Pizza',
+                orderId: 2
+            },
+            {
+                _id: 321,
+                name: 'Soup',
+                orderId: 1
+            }
+        ]
+        expect(result.all).toEqual(expected);
     });
 });

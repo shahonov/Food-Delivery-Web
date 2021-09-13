@@ -10,5 +10,5 @@ export const restaurantsService = {
      * @param {string|number} to
      * @returns RestaurantsArray
      */
-    get: (from, to) => httpService.get(endpoints.restaurants.get(from, to))
+    get: (from, to) => httpService.get(endpoints.restaurants.get)
 }

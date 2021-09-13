@@ -41,6 +41,19 @@
                         border: 1px solid black;
                     }
                 }
+
+                .order-icons {
+                    display: flex;
+
+                    .arrow-up, .arrow-down {
+                        border: 1px solid white;
+
+                        &:hover {
+                            border: 1px solid $clr-secondary-dark;
+                            background-color: $clr-primary-light;
+                        }
+                    }
+                }
             }
         }
     }

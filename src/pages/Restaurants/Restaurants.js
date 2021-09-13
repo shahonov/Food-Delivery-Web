@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Slide } from 'react-reveal';
-// import { Pagination } from '@material-ui/lab';
 import { TextField, Typography } from '@material-ui/core';
 
 import Restaurant from './Restaurant';
@@ -25,31 +24,24 @@ const Restaurants = ({
     user,
     restaurants,
     getRestaurants,
-    // totalRestaurantsCount,
+    restaurantsCount,
+    totalRestaurantsCount,
     addRestaurantToFavorites,
     removeRestaurantFromFavorites
 }) => {
-    const paginationStep = 9;
-    // const pagesCount = Math.ceil(totalRestaurantsCount / paginationStep);
-
     const [loading, setLoading] = useState(false);
     const [kitchenType, setKitchenType] = useState('');
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
-    const [page, setPage] = useState(1);
 
     useEffect(() => {
         (async () => {
             setLoading(true);
-            await getRestaurants(
-                (page - 1) * paginationStep,
-                ((page - 1) * paginationStep) + paginationStep
-            );
+            await getRestaurants();
             setLoading(false);
         })();
-    }, [getRestaurants, page]);
+    }, [getRestaurants]);
 
-    const handleChangePage = (ev, page) => setPage(page);
     const handleKitchenTypeChange = ev => setKitchenType(ev.target.value);
     const handleNameChange = ev => setName(ev.target.value);
     const handleAddressChange = ev => setAddress(ev.target.value);
@@ -152,20 +144,6 @@ const Restaurants = ({
                                     })
                                 }
                             </div>
-                            {/* {
-                                pagesCount > 1 &&
-                                <div className='pagination-container'>
-                                    <Pagination
-                                        page={page}
-                                        size='large'
-                                        shape='rounded'
-                                        color='secondary'
-                                        variant='outlined'
-                                        count={pagesCount}
-                                        onChange={handleChangePage}
-                                    />
-                                </div>
-                            } */}
                         </div>
                     </Slide>
                 </div>
@@ -175,8 +153,7 @@ const Restaurants = ({
 
 const mapStateToProps = state => ({
     user: state.user,
-    restaurants: state.restaurants.all,
-    totalRestaurantsCount: state.restaurants.totalCount
+    restaurants: state.restaurants.all
 });
 
 const mapDispatchToPorps = {
