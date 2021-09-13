@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Slide } from 'react-reveal';
-import { Pagination } from '@material-ui/lab';
+// import { Pagination } from '@material-ui/lab';
 import { TextField, Typography } from '@material-ui/core';
 
 import Restaurant from './Restaurant';
@@ -25,12 +25,12 @@ const Restaurants = ({
     user,
     restaurants,
     getRestaurants,
-    totalRestaurantsCount,
+    // totalRestaurantsCount,
     addRestaurantToFavorites,
     removeRestaurantFromFavorites
 }) => {
     const paginationStep = 9;
-    const pagesCount = Math.ceil(totalRestaurantsCount / paginationStep);
+    // const pagesCount = Math.ceil(totalRestaurantsCount / paginationStep);
 
     const [loading, setLoading] = useState(false);
     const [kitchenType, setKitchenType] = useState('');
@@ -152,7 +152,7 @@ const Restaurants = ({
                                     })
                                 }
                             </div>
-                            {
+                            {/* {
                                 pagesCount > 1 &&
                                 <div className='pagination-container'>
                                     <Pagination
@@ -165,7 +165,7 @@ const Restaurants = ({
                                         onChange={handleChangePage}
                                     />
                                 </div>
-                            }
+                            } */}
                         </div>
                     </Slide>
                 </div>

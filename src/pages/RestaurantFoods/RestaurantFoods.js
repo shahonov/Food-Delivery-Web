@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Slide } from "react-reveal";
-import { Pagination } from "@material-ui/lab";
+// import { Pagination } from "@material-ui/lab";
 import { TextField, Typography } from "@material-ui/core";
 
 import { addMealToCart } from "data/actions/cartActions";
@@ -26,11 +26,11 @@ const RestaurantFoods = ({
     user,
     meals,
     addMealToCart,
-    totalMealsCount,
+    // totalMealsCount,
     getRestaurantOwnerMeals
 }) => {
     const paginationStep = 9;
-    const pagesCount = Math.ceil(totalMealsCount / paginationStep);
+    // const pagesCount = Math.ceil(totalMealsCount / paginationStep);
 
     const { restaurantId, restaurantName } = useParams();
 
@@ -134,7 +134,7 @@ const RestaurantFoods = ({
                                     })
                                 }
                             </div>
-                            {
+                            {/* {
                                 pagesCount > 1 &&
                                 <div className='pagination-container'>
                                     <Pagination
@@ -147,7 +147,7 @@ const RestaurantFoods = ({
                                         onChange={handleChangePage}
                                     />
                                 </div>
-                            }
+                            } */}
                         </div>
                     </Slide>
                 </div>
